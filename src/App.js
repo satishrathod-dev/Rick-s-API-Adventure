@@ -3,7 +3,6 @@ import { Navigate, Route, Routes, useNavigate } from "react-router-dom";
 import axios from "axios";
 import EpisodesList from "./components/EpisodesList";
 import CharacterList from "./components/CharacterList";
-import CharacterDetails from "./Routes/CharacterDetails";
 import Pagination from "./components/Pagination";
 import "./App.css";
 
@@ -139,8 +138,8 @@ const App = () => {
             }
           />
           <Route
-            path="/character/:id"
-            element={<CharacterDetails />} // This will display character details
+          // path="/character/:id"
+          // element={<CharacterDetails />} // This will display character details
           />
         </Routes>
       </div>
