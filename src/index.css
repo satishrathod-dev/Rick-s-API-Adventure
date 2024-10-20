@@ -1,13 +1,28 @@
+/* @tailwind base;
+@tailwind components;
+@tailwind utilities;
+
 body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  width: 100%;
+}
+.episode-list {
+  background-color: #ffffff;
+  width: 300px;
+  border: 1px solid black;
+  border-radius: 5px;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+.episode-header {
+  border: 1px solid black;
+  margin: 2px;
+  padding: 2px;
+  list-style: none;
+}
+
+.character-list {
+  display: flex;
+} */
+
+.episodes-list {
+  cursor: pointer;
 }
