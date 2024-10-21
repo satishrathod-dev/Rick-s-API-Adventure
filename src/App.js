@@ -3,6 +3,7 @@ import { Navigate, Route, Routes, useNavigate } from "react-router-dom";
 import axios from "axios";
 import EpisodesList from "./components/EpisodesList";
 import CharacterList from "./components/CharacterList";
+import CharacterDetails from "./Routes/CharacterDetails";
 import Pagination from "./components/Pagination";
 import "./App.css";
 
@@ -12,8 +13,6 @@ const App = () => {
   const [selectedEpisodeIndex, setSelectedEpisodeIndex] = useState(0);
   const [currentPage, setCurrentPage] = useState(1);
   const [selectedCharacter, setSelectedCharacter] = useState(null);
-
-  const charactersPerPage = 10;
 
   useEffect(() => {
     // Fetch all episodes
@@ -64,22 +63,26 @@ const App = () => {
     }
   };
 
-  //
+  //  // CharacerDetails logic
+
   // const navigate = useNavigate();
 
+  const handleCharacterSelect = (character) => {
+    console.log("Selected character:", character);
+    setSelectedCharacter(character);
+    // navigate(`/character/${character.id}`);
+  };
+
+  // const navigate = useNavigate();
   // const handleCharacterSelect = (character) => {
   //   console.log("Selected character:", character);
   //   setSelectedCharacter(character);
   //   navigate(`/character/${character.id}`);
   // };
-  const navigate = useNavigate();
-  const handleCharacterSelect = (character) => {
-    console.log("Selected character:", character);
-    setSelectedCharacter(character);
-    navigate(`/character/${character.id}`);
-  };
 
   // Pagination logic
+  const charactersPerPage = 10;
+
   const indexOfLastCharacter = currentPage * charactersPerPage;
   const indexOfFirstCharacter = indexOfLastCharacter - charactersPerPage;
   const currentCharacters = characters.slice(
@@ -88,6 +91,64 @@ const App = () => {
   );
   const totalPages = Math.ceil(characters.length / charactersPerPage);
 
+  // return (
+  // Commented out handleCharacterSelect cause its causing some bug in the app for now **fix it**
+  //   <div className="container">
+  //     <div className="sidebar">
+  //       <EpisodesList
+  //         episodes={episodes}
+  //         onEpisodeSelect={handleEpisodeSelect}
+  //         selectedEpisodeIndex={selectedEpisodeIndex}
+  //       />
+  //     </div>
+
+  //     {/* <div className="main-content">
+  //       <CharacterList
+  //         handleCharacterSelect={handleCharacterSelect}
+  //         episode={
+  //           selectedEpisodeIndex !== null
+  //             ? episodes[selectedEpisodeIndex]
+  //             : null
+  //         }
+  //         characters={currentCharacters}
+  //       />
+  //       <Pagination
+  //         currentPage={currentPage}
+  //         totalPages={totalPages}
+  //         setCurrentPage={setCurrentPage}
+  //       />
+  //     </div> */}
+  //     <div className="main-content">
+  //       <Routes>
+  //         <Route
+  //           path="/"
+  //           element={
+  //             <>
+  //               <CharacterList
+  //                 handleCharacterSelect={handleCharacterSelect}
+  //                 episode={
+  //                   selectedEpisodeIndex !== null
+  //                     ? episodes[selectedEpisodeIndex]
+  //                     : null
+  //                 }
+  //                 characters={currentCharacters}
+  //               />
+  //               <Pagination
+  //                 currentPage={currentPage}
+  //                 totalPages={totalPages}
+  //                 setCurrentPage={setCurrentPage}
+  //               />
+  //             </>
+  //           }
+  //         />
+  //         {/* <Route
+  //           path="/character/:id"
+  //           element={<CharacterDetails />} // This will display character details
+  //         /> */}
+  //       </Routes>
+  //     </div>
+  //   </div>
+  // );
   return (
     <div className="container">
       <div className="sidebar">
@@ -98,7 +159,7 @@ const App = () => {
         />
       </div>
 
-      {/* <div className="main-content">
+      <div className="main-content">
         <CharacterList
           handleCharacterSelect={handleCharacterSelect}
           episode={
@@ -113,35 +174,6 @@ const App = () => {
           totalPages={totalPages}
           setCurrentPage={setCurrentPage}
         />
-      </div> */}
-      <div className="main-content">
-        <Routes>
-          <Route
-            path="/"
-            element={
-              <>
-                <CharacterList
-                  handleCharacterSelect={handleCharacterSelect}
-                  episode={
-                    selectedEpisodeIndex !== null
-                      ? episodes[selectedEpisodeIndex]
-                      : null
-                  }
-                  characters={currentCharacters}
-                />
-                <Pagination
-                  currentPage={currentPage}
-                  totalPages={totalPages}
-                  setCurrentPage={setCurrentPage}
-                />
-              </>
-            }
-          />
-          <Route
-          // path="/character/:id"
-          // element={<CharacterDetails />} // This will display character details
-          />
-        </Routes>
       </div>
     </div>
   );
