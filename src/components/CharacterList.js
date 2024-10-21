@@ -17,7 +17,7 @@ const CharacterList = ({
         {characters.length > 0 ? (
           characters.map((character) => (
             <div
-              onClick={() => handleCharacterSelect(character)}
+              //   onClick={() => handleCharacterSelect(character)}
               key={character.id}
               className="character-card"
             >

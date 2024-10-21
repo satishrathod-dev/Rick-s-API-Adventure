@@ -162,7 +162,7 @@ const App = () => {
 
       <div className="main-content">
         <CharacterList
-          handleCharacterSelect={handleCharacterSelect}
+          // handleCharacterSelect={handleCharacterSelect}
           episode={
             selectedEpisodeIndex !== null
               ? episodes[selectedEpisodeIndex]
