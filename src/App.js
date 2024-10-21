@@ -46,6 +46,7 @@ const App = () => {
     }
   };
 
+  // Handling episode
   const handleEpisodeSelect = (index) => {
     if (episodes[index]) {
       if (selectedEpisodeIndex === index) {
