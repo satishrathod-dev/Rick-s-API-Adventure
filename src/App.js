@@ -21,6 +21,7 @@ const App = () => {
         const response = await axios.get(
           "https://rickandmortyapi.com/api/episode"
         );
+        console.log(response.data.results);
         setEpisodes(response.data.results);
         // Fetch characters from the first episode
         if (response.data.results.length > 0) {
@@ -35,11 +36,14 @@ const App = () => {
   }, []);
 
   // Fetch characters for the selected episode
-  const fetchCharacters = async (characterUrls) => {
+  const fetchCharacters = async (characters) => {
     try {
-      const characterPromises = characterUrls.map((url) => axios.get(url));
-      console.log(characterPromises);
+      const characterPromises = characters.map((character) =>
+        axios.get(character)
+      );
+      // console.log(characterPromises);
       const characterResponses = await Promise.all(characterPromises);
+      console.log("characterResponses", characterResponses);
       setCharacters(characterResponses.map((res) => res.data));
     } catch (error) {
       console.error("Error fetching characters:", error);
